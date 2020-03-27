@@ -19,5 +19,6 @@ class VoteAnswerController extends Controller
         auth()->user()->voteAnswer($answer, $vote);
 
         return back();
+		
     }
 }
