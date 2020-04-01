@@ -2,9 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\Http",
-    "\\app\\Http\\Controllers"
+    "\\app\\Http\\Controllers",
+    "\\node_modules",
+    "\\public",
+    "\\public\\css",
+    "\\public\\js",
+    "\\resources\\js",
+    "\\resources\\views\\answers",
+    "\\vendor"
   ],
-  "SelectedNode": "\\app\\Http\\Controllers\\QuestionsController.php",
+  "SelectedNode": "\\resources",
   "PreviewInSolutionExplorer": false
 }

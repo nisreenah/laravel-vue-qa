@@ -50,6 +50,7 @@ export default {
                     .then(res => {
                         $(this.$el).fadeOut(500, () => {
                             this.$toast.success(res.data.message, "Sucess", { timeout: 3000 });
+                          
                         })
                     });
                     instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');

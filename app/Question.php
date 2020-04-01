@@ -11,7 +11,7 @@ class Question extends Model
 
     protected $fillable = ['title', 'body'];
 
-    protected $appends = ['created_date'];
+    protected $appends = ['created_date', 'is_favorited', 'favorites_count'];
 
     public function user()
     {
@@ -28,7 +28,7 @@ class Question extends Model
     // {
     //     $this->attributes['body'] = clean($value);
     // }
-	
+
     public function getUrlAttribute()
     {
         // return route("questions.show", $this->id);
@@ -65,13 +65,13 @@ class Question extends Model
         // $question->answers->count()
         // foreach ($question->answers as $answer)
     }
-	
+
 	public function acceptBestAnswer(Answer $answer)
     {
         $this->best_answer_id = $answer->id;
         $this->save();
     }
-	
+
     public function favorites()
     {
         return $this->belongsToMany(User::class, 'favorites')->withTimestamps(); //, 'question_id', 'user_id');
@@ -91,7 +91,7 @@ class Question extends Model
     {
         return $this->favorites->count();
     }
-	
+
 	public function getExcerptAttribute()
     {
         return $this->excerpt(250);
@@ -106,5 +106,5 @@ class Question extends Model
     {
         return \Parsedown::instance()->text($this->body);
     }
-	
+
 }
