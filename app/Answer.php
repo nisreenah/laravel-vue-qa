@@ -10,7 +10,7 @@ class Answer extends Model
 
     protected $fillable = ['body', 'user_id'];
 
-    protected $appends = ['created_date', 'body_html'];
+    protected $appends = ['created_date', 'body_html', 'is_best'];
 
     public function question()
     {
@@ -49,11 +49,11 @@ class Answer extends Model
             }
         }); */
 
-        static::deleted(function ($answer) {            
-            $answer->question->decrement('answers_count');            
+        static::deleted(function ($answer) {
+            $answer->question->decrement('answers_count');
         });
-		
-		
+
+
     }
 
     public function getCreatedDateAttribute()
@@ -65,7 +65,7 @@ class Answer extends Model
     {
         return $this->id === $this->question->best_answer_id ? 'vote-accepted' : '';
     } */
-	
+
 	public function getStatusAttribute()
     {
         return $this->isBest() ? 'vote-accepted' : '';
@@ -80,7 +80,7 @@ class Answer extends Model
     {
         return $this->id === $this->question->best_answer_id;
     }
-	
-	
+
+
 
 }
